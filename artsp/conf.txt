@@ -1,0 +1,5 @@
+LOG_HID_PATH = 'parsed_data/log.json'
+POSTS_PATH = 'D:/Python/parsing/arts/data/data.json'
+TAGS_PATH = 'D:/Python/parsing/arts/data/tags.json'
+CATEGORIES_PATH = 'D:/Python/parsing/arts/data/categories.json'
+CSV_DIR = 'D:/Python/parsing/arts/data/test.csv'
