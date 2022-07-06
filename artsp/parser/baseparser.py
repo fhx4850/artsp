@@ -6,8 +6,9 @@ import abc
 import threading
 import datetime
 import os
+
 from artsp.conf import config
-import time
+from time import sleep
 
 
 class _ParserCollectDataIc(metaclass=abc.ABCMeta):
@@ -135,7 +136,7 @@ class _ValidatorIc(metaclass=abc.ABCMeta):
 
 class _BasePostParser(_ParserCollectDataIc):
     """The class represents the implementation of methods for collecting data."""
-    _delay = 10
+    _delay = 0.01
 
     def collect_post_detail_data(self, hash_id):
         thr = []
@@ -144,6 +145,7 @@ class _BasePostParser(_ParserCollectDataIc):
         for h in hash_id:
             t = threading.Thread(target=self._set_post_detail_data, args=(h, post_detail_data))
             thr.append(t)
+            sleep(0.1)
             t.start()
         for tt in thr:
             tt.join()
@@ -155,7 +157,6 @@ class _BasePostParser(_ParserCollectDataIc):
         post_detail_data = []
         t1 = datetime.datetime.now()
         for x, i in enumerate(hash_id):
-            time.sleep(self._delay)
             print(f'Set pdd -> {x+1}')
             self._set_post_detail_data(i, post_detail_data)
         t2 = datetime.datetime.now()

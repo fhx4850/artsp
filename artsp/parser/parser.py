@@ -80,6 +80,6 @@ class TrendingParser(_Parser):
 
 
 if __name__ == '__main__':
-    cp = TrendingParser([1, 1], 100)
+    cp = TrendingParser([1, 10], 100)
     cp.collect(slow_mode=False)
     cp.append_posts_data()
